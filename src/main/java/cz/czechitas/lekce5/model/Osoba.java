@@ -9,6 +9,57 @@ public class Osoba {
 
     private Telefon telefon;
 
+    private String pracovniMail;
+    private String soukromyMail;
+
+    private Adresa adresa;
+
+    public Adresa getAdresa() {
+        return adresa;
+    }
+
+    public void setAdresa(Adresa adresa) {
+        this.adresa = adresa;
+    }
+
+    public String getPracovniMail() {
+        return pracovniMail;
+    }
+
+    public void setPracovniMail(String pracovniMail) {
+        if (pracovniMail.contains("@") && pracovniMail.contains(".")) {
+            this.pracovniMail = pracovniMail;
+        } else {
+            System.out.println("Zadej validní email.");
+        }
+    }
+
+    public String getSoukromyMail() {
+        return soukromyMail;
+    }
+
+    public void setSoukromyMail(String soukromyMail) {
+        if (soukromyMail.contains("@") && soukromyMail.contains(".")) {
+            this.soukromyMail = soukromyMail;
+        } else {
+            System.out.println("Zadej validní email.");
+        }
+    }
+
+    public String getKontakty() {
+        String kontakty = "";
+        if (telefon != null) {
+            kontakty += "Tel.: " + telefon + "\n";
+        }
+        if (pracovniMail != null) {
+            kontakty += "Pracovní mail: " + pracovniMail + "\n";
+        }
+        if (soukromyMail != null) {
+            kontakty += "Soukromý mail: " + soukromyMail + "\n";
+        }
+        return kontakty;
+    }
+
     public void setJmeno(String jmeno) {
         Objects.requireNonNull(jmeno);
         if (jmeno.isBlank()) {
